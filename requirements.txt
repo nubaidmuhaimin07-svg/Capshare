@@ -1,0 +1,5 @@
+fastapi>=0.110
+uvicorn>=0.29
+PySide6>=6.6
+requests>=2.31
+segno>=1.6

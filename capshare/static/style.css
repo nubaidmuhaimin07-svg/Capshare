@@ -1,0 +1,55 @@
+:root {
+  --bg: #f4f6fb; --card: #ffffff; --ink: #14213d; --muted: #5b6678; --line: #e1e6ef;
+  --accent: #4f46e5; --accent-ink: #ffffff; --ok: #0f9d58; --warn: #b45309; --bad: #c62828;
+  --chip: #eef2ff; --radius: 14px;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #0e1424; --card: #161d33; --ink: #e8ecf8; --muted: #9aa5c0; --line: #27304d;
+          --accent: #818cf8; --accent-ink: #0e1424; --chip: #222b4a; --ok: #4ade80; --warn: #fbbf24; --bad: #f87171; }
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }   /* author display rules must not defeat `hidden` */
+body { margin: 0; background: var(--bg); color: var(--ink);
+       font: 16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, sans-serif; }
+.top { display: flex; align-items: center; justify-content: space-between; gap: 12px;
+       padding: 14px 20px; background: var(--card); border-bottom: 1px solid var(--line); }
+.brand { font-weight: 700; display: flex; align-items: center; gap: 10px; }
+.brand small { color: var(--muted); font-weight: 500; }
+.logo { display: inline-grid; place-items: center; width: 32px; height: 32px; border-radius: 9px;
+        background: var(--accent); color: var(--accent-ink); font-weight: 800; }
+.who { display: flex; align-items: center; gap: 10px; color: var(--muted); }
+main { max-width: 980px; margin: 0 auto; padding: 20px 16px 60px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+        padding: 20px; margin-bottom: 18px; }
+.card.narrow { max-width: 420px; margin: 40px auto; }
+h1 { font-size: 1.35rem; margin: 0 0 8px; } h2 { font-size: 1.1rem; margin: 0 0 12px; }
+.muted { color: var(--muted); margin: 0 0 14px; }
+.error { color: var(--bad); min-height: 1.4em; margin: 10px 0 0; }
+.row { display: flex; gap: 12px; align-items: center; } .between { justify-content: space-between; flex-wrap: wrap; }
+label { display: block; margin-bottom: 12px; font-weight: 600; font-size: .92rem; }
+input[type=text], input:not([type]), input[type=password] {
+  width: 100%; margin-top: 6px; padding: 11px 12px; border-radius: 10px; border: 1px solid var(--line);
+  background: var(--bg); color: var(--ink); font-size: 1rem; }
+button, .file-btn { white-space: nowrap; font: inherit; border-radius: 10px; padding: 10px 16px; border: 1px solid var(--line);
+  background: var(--card); color: var(--ink); cursor: pointer; font-weight: 600; }
+button.primary, .file-btn.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+button.ghost { background: transparent; }
+button:disabled { opacity: .5; cursor: not-allowed; }
+.files { display: grid; gap: 12px; }
+.file { border: 1px solid var(--line); border-radius: 12px; padding: 14px; display: grid; gap: 8px; }
+.file .name { font-weight: 700; word-break: break-all; }
+.file .meta { color: var(--muted); font-size: .88rem; display: flex; gap: 14px; flex-wrap: wrap; }
+.chips { display: flex; gap: 6px; flex-wrap: wrap; }
+.chip { background: var(--chip); border-radius: 999px; padding: 2px 10px; font-size: .8rem; font-weight: 700; }
+.chip.ok { color: var(--ok); } .chip.bad { color: var(--bad); } .chip.warn { color: var(--warn); }
+.actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.progress { height: 8px; background: var(--chip); border-radius: 8px; overflow: hidden; margin: 8px 0; }
+.progress > div { height: 100%; width: 0; background: var(--accent); transition: width .15s; }
+.table-wrap { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: .92rem; }
+th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+th { color: var(--muted); font-weight: 600; }
+.toast { position: fixed; left: 50%; bottom: 20px; transform: translateX(-50%); max-width: calc(100% - 32px);
+         background: var(--ink); color: var(--bg); padding: 12px 16px; border-radius: 12px; z-index: 9; }
+.toast.bad { background: var(--bad); color: #fff; }
+@media (max-width: 560px) { .top { padding: 12px 16px; } .card { padding: 16px; } }

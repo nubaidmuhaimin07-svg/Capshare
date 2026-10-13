@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CapShare</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <header class="top">
+    <div class="brand"><span class="logo">C</span> CapShare <small>transfer page</small></div>
+    <div id="who" class="who" hidden>
+      <span id="whoName"></span>
+      <button id="logoutBtn" class="ghost">Sign out</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- ------------------------------------------------ sign in -->
+    <section id="loginView" class="card narrow">
+      <h1>Sign in</h1>
+      <p class="muted">Use your CapShare account. Access to each file is decided by the
+        capabilities the owner (or someone they delegated to) gave you.</p>
+      <form id="loginForm" autocomplete="on">
+        <label>Username <input id="username" name="username" autocomplete="username" required></label>
+        <label>Password <input id="password" name="password" type="password" autocomplete="current-password" required></label>
+        <button class="primary" type="submit">Sign in</button>
+      </form>
+      <p id="loginError" class="error" role="alert"></p>
+    </section>
+
+    <!-- ------------------------------------------------ files -->
+    <div id="appView" hidden>
+      <section class="card">
+        <div class="row between">
+          <h1>Files you can reach</h1>
+          <label class="primary file-btn">Upload a new file
+            <input id="newFile" type="file" hidden>
+          </label>
+        </div>
+        <p class="muted">Downloads and uploads go directly over your local network to the sender's
+          computer. Every chunk is re-checked, so a revoked capability stops a transfer.</p>
+        <div id="uploadProgress" class="progress" hidden><div></div></div>
+        <div id="fileList" class="files"></div>
+      </section>
+
+      <section class="card">
+        <h2>Transfers</h2>
+        <div class="table-wrap"><table id="transferTable">
+          <thead><tr><th>File</th><th>Direction</th><th>State</th><th>Progress</th><th>Note</th></tr></thead>
+          <tbody></tbody>
+        </table></div>
+      </section>
+
+      <section class="card">
+        <h2>My capabilities</h2>
+        <div class="table-wrap"><table id="grantTable">
+          <thead><tr><th>#</th><th>File</th><th>From</th><th>Actions</th><th>Delegate</th><th>Expires</th><th>Status</th></tr></thead>
+          <tbody></tbody>
+        </table></div>
+      </section>
+    </div>
+  </main>
+
+  <div id="toast" class="toast" hidden></div>
+  <script src="/static/app.js"></script>
+</body>
+</html>
